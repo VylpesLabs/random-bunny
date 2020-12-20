@@ -1,71 +1,41 @@
-'use strict';
+const fetch = require('node-fetch');
 
-const got = require('got');
-const uniqueRandomArray = require('unique-random-array');
-const EventEmitter = require('eventemitter3');
+sortable = [
+    'new',
+    'hot',
+    'top'
+]
 
-const randomCache = {};
+function randomBunny(subreddit, sortBy, cb) {
+    if (!sortable.includes(sortBy)) sortBy = 'hot';
 
-function formatResult(getRandomImage) {
-    const imageData = getRandomImage();
-    if (!imageData) {
-        return;
-    }
-    return `http://imgur.com/${imageData.hash}${imageData.ext.replace(/\?.*/, '')}`;
-}
+    fetch(`https://www.reddit.com/r/${subreddit}/${sortBy}.json`).then(res => {
+        res.json().then(res => {
+            const data = res.data.children;
+            const size = data.length;
 
-function storeResults(images, subreddit) {
-    const getRandomImage = uniqueRandomArray(images);
+            const random = getRandom(0, size - 1);
 
-    randomCache[subreddit] = getRandomImage;
-    return getRandomImage;
-}
+            const image = data[random];
+            let found = false;
 
-function randomPuppy(subreddit) {
-    subreddit = (typeof subreddit === 'string' && subreddit.length !== 0) ? subreddit : 'puppies';
+            while (!found) {
+                const random = getRandom(0, size - 1);
 
-    if (randomCache[subreddit]) {
-        return Promise.resolve(formatResult(randomCache[subreddit]));
-    }
+                const image = data[random].data['url'];
+                const title = data[random].data['title'];
 
-    return got(`https://imgur.com/r/${subreddit}/hot.json`, {json: true})
-        .then(response => storeResults(response.body.data, subreddit))
-        .then(getRandomImage => formatResult(getRandomImage));
-}
-
-// silly feature to play with observables
-function all(subreddit) {
-    const eventEmitter = new EventEmitter();
-
-    function emitRandomImage(subreddit) {
-        randomPuppy(subreddit).then(imageUrl => {
-            eventEmitter.emit('data', imageUrl + '#' + subreddit);
-            if (eventEmitter.listeners('data').length) {
-                setTimeout(() => emitRandomImage(subreddit), 200);
+                if (image.includes('.jpg')) {
+                    found = true;
+                    cb(image, title);
+                }
             }
         });
-    }
-
-    emitRandomImage(subreddit);
-    return eventEmitter;
+    });
 }
 
-function callback(subreddit, cb) {
-    randomPuppy(subreddit)
-        .then(url => cb(null, url))
-        .catch(err => cb(err));
+function getRandom(min, max) {
+    return Math.floor((Math.random() * max) + min);
 }
 
-// subreddit is optional
-// callback support is provided for a training exercise
-module.exports = (subreddit, cb) => {
-    if (typeof cb === 'function') {
-        callback(subreddit, cb);
-    } else if (typeof subreddit === 'function') {
-        callback(null, subreddit);
-    } else {
-        return randomPuppy(subreddit);
-    }
-};
-
-module.exports.all = all;
+module.exports = randomBunny;

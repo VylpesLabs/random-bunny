@@ -1,65 +1,40 @@
-# random-puppy [![Build Status](https://travis-ci.org/dylang/random-puppy.svg?branch=master)](https://travis-ci.org/dylang/random-puppy)
+# random-bunny
 
-> Get a random puppy image url.
-
-<img src="http://i.imgur.com/0zZ8m6B.jpg" width="300px">
+> Get a random image url from a subreddit of your choosing.
 
 ## Install
 
 ```
-$ npm install --save random-puppy
+$ npm install --save random-bunny
 ```
 
 
 ## Usage
 
 ```js
-const randomPuppy = require('random-puppy');
+const randomBunny = require('random-bunny');
 
-randomPuppy()
-    .then(url => {
-        console.log(url);
-    })
-
-//=> 'http://imgur.com/IoI8uS5.jpg'
+randomBunny('rabbits', 'new', (image, title) => {
+    console.log(title + ": " + image);
+});
 ```
 
 
 ## API
 
-### `randomPuppy()`
+### `randomBunny()`
 
-Returns a `promise` for a random puppy image url from http://imgur.com/ from https://www.reddit.com/r/puppy
-
-### `randomPuppy(subreddit)`
-
-Returns a `promise` for a random image url from the selected subreddit. *Warning: We cannot promise it will be a image of a puppy!*
-
-### `randomPuppy.all(subreddit)`
-
-Returns an `eventemitter` for getting all random images for a subreddit.
-
-```js
-const event = randomPuppy.all(subreddit);
-event.on('data', url => console.log(url));
-```
-
-Or:
-```js
-const event = randomPuppy.all('puppies');
-
-Observable.fromEvent(event, 'data')
-    .subscribe(data => {
-      console.log(data);
-    });
-```
+Returns a `url` and `title` for a random post to the `callback`. Accepts 3 arguments: `subreddit`, `sortby` ('new', 'hot', 'top'), `callback(image, title)`
 
 ## Notes
 
 * Node 4 or newer.
-* Caches results from imgur in memory.
-* Created for the purpose of using in a training exercise on different ways to do async in JavaScript at [Opower](https://opower.com/).
+* based upon [Random Puppy](https://github.com/dylang/random-puppy)
+
+## Links
+
+* Discord: [Server Link](https://discord.gg/UyAhAVp)
 
 ## License
 
-MIT © [Dylan Greene](https://github.com/dylang)
+MIT © [Vylpes](https://gitlab.vylpes.com/Vylpes);
