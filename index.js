@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-sortable = [
+const sortable = [
     'new',
     'hot',
     'top'
@@ -14,9 +14,6 @@ function randomBunny(subreddit, sortBy, cb) {
             const data = res.data.children;
             const size = data.length;
 
-            const random = getRandom(0, size - 1);
-
-            const image = data[random];
             let found = false;
 
             while (!found) {
