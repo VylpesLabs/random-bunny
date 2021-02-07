@@ -33,13 +33,25 @@ function randomBunny(subreddit, sortBy, cb) {
                 const random = getRandom(0, size - 1);
 
                 // Get variables from json to pass back
-                const image = data[random].data['url'];
-                const title = data[random].data['title'];
+                const randomSelect = data[random].data;
+
+                // The json string to send back
+                const json = {
+                    archived: randomSelect['archived'],
+                    downs: randomSelect['downs'],
+                    hidden: randomSelect['hidden'],
+                    permalink: randomSelect['permalink'],
+                    subreddit: randomSelect['subreddit'],
+                    subredditSubscribers: randomSelect['subreddit_subscribers'],
+                    title: randomSelect['title'],
+                    ups: randomSelect['ups'],
+                    url: randomSelect['url']
+                };
 
                 // If the post is a .jpg, send back the data and stop looping
-                if (image.includes('.jpg')) {
+                if (json.url.includes('.jpg')) {
                     found = true;
-                    cb(image, title);
+                    cb(json);
                 }
             }
         });
