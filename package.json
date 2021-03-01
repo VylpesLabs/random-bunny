@@ -17,6 +17,7 @@
     "node-fetch": "^2.6.1"
   },
   "scripts": {
+    "test": "echo none",
     "lint": "eslint ."
   },
   "bugs": "https://gitlab.vylpes.com/Vylpes/random-bunny/-/issues",
