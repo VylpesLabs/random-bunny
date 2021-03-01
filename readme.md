@@ -14,8 +14,8 @@ $ npm install --save random-bunny
 ```js
 const randomBunny = require('random-bunny');
 
-randomBunny('rabbits', 'new', (image, title) => {
-    console.log(title + ": " + image);
+randomBunny('rabbits', 'new', res => {
+    console.log(res.title + ": " + res.url);
 });
 ```
 
@@ -24,7 +24,18 @@ randomBunny('rabbits', 'new', (image, title) => {
 
 ### `randomBunny()`
 
-Returns a `url` and `title` for a random post to the `callback`. Accepts 3 arguments: `subreddit`, `sortby` ('new', 'hot', 'top'), `callback(image, title)`
+Returns a `json string` for a random post to the `callback`. Accepts 3 arguments: `subreddit`, `sortby` ('new', 'hot', 'top'), `callback(res)`
+
+The json string which gets returned consists of:
+- archived
+- downs
+- hidden
+- permalink
+- subreddit
+- subredditSubscribers
+- title
+- ups
+- url
 
 ## Notes
 
@@ -37,4 +48,4 @@ Returns a `url` and `title` for a random post to the `callback`. Accepts 3 argum
 
 ## License
 
-MIT © [Vylpes](https://gitlab.vylpes.com/Vylpes);
+MIT © [Vylpes](https://gitlab.vylpes.com/Vylpes)
