@@ -59,7 +59,7 @@ function randomBunny(subreddit, sortBy, cb) {
 }
 
 function promise(subreddit, sortBy) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
         // If the sortable list doesn't include sortBy, default to 'hot'
         if (!sortable.includes(sortBy)) sortBy = 'hot';
 
