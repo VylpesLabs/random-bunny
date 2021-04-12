@@ -1,6 +1,6 @@
 {
   "name": "random-bunny",
-  "version": "20.0.0",
+  "version": "1.1.0",
   "description": "Get a random subreddit image url",
   "license": "MIT",
   "author": "Vylpes",
@@ -17,11 +17,14 @@
     "node-fetch": "^2.6.1"
   },
   "scripts": {
+    "test": "echo none",
     "lint": "eslint ."
   },
   "bugs": "https://gitlab.vylpes.com/Vylpes/random-bunny/-/issues",
   "homepage": "https://gitlab.vylpes.com/Vylpes/random-bunny",
-  "funding": "https://ko-fi.com/gravitysoftware",
+  "funding": {
+    "url": "https://ko-fi.com/gravitysoftware"
+  },
   "devDependencies": {
     "eslint": "^7.17.0"
   }
