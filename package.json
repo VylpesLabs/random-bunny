@@ -20,10 +20,10 @@
     "test": "echo none",
     "lint": "eslint ."
   },
-  "bugs": "https://gitlab.vylpes.com/Vylpes/random-bunny/-/issues",
-  "homepage": "https://gitlab.vylpes.com/Vylpes/random-bunny",
+  "bugs": "https://github.com/Vylpes/random-bunny/issues",
+  "homepage": "https://github.com/Vylpes/random-bunny",
   "funding": {
-    "url": "https://ko-fi.com/gravitysoftware"
+    "url": "https://ko-fi.com/vylpes"
   },
   "devDependencies": {
     "eslint": "^7.17.0"
