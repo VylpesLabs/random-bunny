@@ -12,13 +12,20 @@ $ npm install --save random-bunny
 ## Usage
 
 ```js
-const randomBunny = require('random-bunny');
+const { randomBunny } = require('random-bunny');
 
 randomBunny('rabbits', 'new', res => {
     console.log(res.title + ": " + res.url);
 });
 ```
 
+```js
+const { promise } = require('random-bunny');
+
+promise('rabbits', 'new').then((res) => {
+    console.log(res.title);
+});
+```
 
 ## API
 
@@ -36,6 +43,12 @@ The json string which gets returned consists of:
 - title
 - ups
 - url
+
+### `promise()`
+
+Returns a `json string` for a random post in a `promise`. Accepts 2 arguments: `subreddit`, `sortby` ('new', 'hot', 'top').
+
+The json string returned in the promise consists of the same above.
 
 ## Notes
 
