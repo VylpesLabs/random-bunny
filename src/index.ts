@@ -1,6 +1,6 @@
 import IFetchResult from "./contracts/IFetchResult";
 import IRedditResult from "./contracts/IRedditResult";
-import fetch from "node-fetch";
+import fetch from "got";
 
 const sortable = [
     'new',
@@ -19,7 +19,7 @@ export default async function randomBunny(subreddit: string, sortBy: string, max
         }
     }
 
-    const json = await result.json() as any;
+    const json = JSON.parse(result.body);
 
     if (!json) {
         return {
