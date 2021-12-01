@@ -4,6 +4,8 @@
   "description": "Get a random subreddit image url",
   "license": "MIT",
   "author": "Vylpes",
+  "main": "./dist/index",
+  "typings": "./dist",
   "keywords": [
     "rabbit",
     "bunny",
@@ -23,10 +25,10 @@
   },
   "bugs": "https://github.com/Vylpes/random-bunny/issues",
   "homepage": "https://github.com/Vylpes/random-bunny",
-  "funding": {
-    "url": "https://ko-fi.com/vylpes"
-  },
+  "funding": "https://ko-fi.com/vylpes",
   "devDependencies": {
-    "eslint": "^7.17.0"
+    "@types/node": "^16.11.11",
+    "eslint": "^7.17.0",
+    "typescript": "^4.5.2"
   }
 }
