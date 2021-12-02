@@ -4,34 +4,32 @@
 
 ## Install
 
+```bash
+npm install --save random-bunny
 ```
-$ npm install --save random-bunny
+
+or if you're using yarn
+
+```bash
+yarn add random-bunny
 ```
 
 
 ## Usage
 
-```js
-const { randomBunny } = require('random-bunny');
+```ts
+import randomBunny from "random-bunny";
 
-randomBunny('rabbits', 'new', res => {
-    console.log(res.title + ": " + res.url);
-});
-```
-
-```js
-const { promise } = require('random-bunny');
-
-promise('rabbits', 'new').then((res) => {
-    console.log(res.title);
-});
+// ... In an async function
+const result = await randomBunny('rabbits', 'hot', 100);
+console.log(result);
 ```
 
 ## API
 
 ### `randomBunny()`
 
-Returns a `json string` for a random post to the `callback`. Accepts 3 arguments: `subreddit`, `sortby` ('new', 'hot', 'top'), `callback(res)`
+Returns a `json string` for a random post. Accepts 3 arguments: `subreddit`, `sortby` ('new', 'hot', 'top'), `maxTries?` (default 100)
 
 The json string which gets returned consists of:
 - archived
@@ -44,11 +42,9 @@ The json string which gets returned consists of:
 - ups
 - url
 
-### `promise()`
+`sortBy` will default to 'hot' if not given or invalid
 
-Returns a `json string` for a random post in a `promise`. Accepts 2 arguments: `subreddit`, `sortby` ('new', 'hot', 'top').
-
-The json string returned in the promise consists of the same above.
+`maxTries` prevents the script from rerolling too many times. The script rerolls the randomiser if the post its given doesn't contain an image. Default 100.
 
 ## Notes
 
@@ -57,8 +53,8 @@ The json string returned in the promise consists of the same above.
 
 ## Links
 
-* Discord: [Server Link](https://discord.gg/UyAhAVp)
+* Discord: [Server Link](https://vylpes.xyz/discord)
 
 ## License
 
-MIT © [Vylpes](https://gitlab.vylpes.com/Vylpes)
+MIT © [Vylpes](https://www.vylpes.com)
