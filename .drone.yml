@@ -20,5 +20,3 @@ trigger:
     - hotfix/*
   event:
     - push
-    - pull_request
-    - tag

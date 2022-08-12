@@ -704,6 +704,11 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
+linqts@^1.14.4:
+  version "1.14.4"
+  resolved "https://registry.yarnpkg.com/linqts/-/linqts-1.14.4.tgz#0aa0f78fc6be073d7db874e0a0480fda5d06db7d"
+  integrity sha512-b5sJjG1ZQ8iLSTJV19jWgMLoQicrQVVRkkQN7B/aboU+cf30lgnhIoGM8vEjqPxZFpryDU78PFpuTnfYNIHMeg==
+
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
