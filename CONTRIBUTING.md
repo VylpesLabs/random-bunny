@@ -14,6 +14,8 @@ This project and everyone participating in it is governed by the Random Bunny Co
 
 You can ask a question about the project in the `#development` channel in the [Discord Server](https://discord.gg/UyAhAVp).
 
+You can also email with queries and support if you'd prefer at [helpdesk@vylpes.com](mailto:helpdesk@vylpes.com).
+
 ## What you should know
 
 ### Javascript and Node
@@ -115,13 +117,13 @@ You'll need the following tools:
 
 * Git
 * NodeJS
+* Yarn
 
 Install and build all of the dependencies using `npm`
 
 ```bash
-cd Random Bunny
-npm install
-cp config.json.template config.json
+cd random-bunny
+yarn install
 ```
 And then use your text editor of choice to fill in the `config.json` file.
 
@@ -132,22 +134,20 @@ If you want to understand how Random Bunny works or want to debug an issue, you'
 First, fork the Random Bunny repository so that you can make a pull request. Then, clone your fork locally:
 
 ```bash
-git clone https://gitlab.vylpes.com/<your-gitlab-account>/random-bunny.git
+git clone https://gitea.vylpes.xyz/<your-gitea-account>/random-bunny.git
 ```
 
 Occasionally, you will want to merge changes in the upstream repository (the official code repo) with your fork.
 
 ```bash
-cd Random Bunny
+cd random-bunny
 git checkout master
-git pull https://gitlab.vylpes.com/vylpes/random-bunny.git master
+git pull https://gitea.vylpes.xyz/vylpes/random-bunny.git master
 ```
 
 Manage any merge conflicts, commit them, and then push them to your fork.
 
-Go into `Random Bunny` and start the bot in dev mode with `npm run dev` or `node bot dev`
-
-> **Note:** If you have `nodemon` installed on your system you can use this during development so it auto restarts when you make code changes. Instead of the commands above you can then run `nodemon bot dev`.
+Go into `random-bunny` and build the package using `yarn build`.
 
 #### Pull Requests
 
@@ -168,6 +168,11 @@ Please follow these steps to have your contribution considered by maintainers:
 * When the checks have passed a maintainer will review your code and ask for any improvements or questions, and will merge it if they are satisifed.
 
 While the prerequesites above must be satisifed prior to having your pull reuqest accepted, the reviewer(s) may ask you to complete additional design ork, tests, or other changes before your pull request can be ultimately accepted.
+
+#### Submitting Changes via Email
+If you're not within our gitea instance and still like to contribute, you can send us your contributions to [git@vylpes.com](mailto:git@vylpes.com).
+
+For more information on how to do this, see the [git documentation](https://git-scm.com/docs/git-send-email).
 
 #### JavaScript Styleguide
 
@@ -309,21 +314,20 @@ Unsure where to begin contributing to Random Bunny? You can start by looking thr
 
 #### Prerequisites
 
-In order to download necessary tools, clone the repository, and install dependencies via `npm` you need network access.
+In order to download necessary tools, clone the repository, and install dependencies via `yarn` you need network access.
 
 You'll need the following tools:
 
 * Git
 * NodeJS
+* Yarn
 
-Install and build all of the dependencies using `npm`
+Install and build all of the dependencies using `yarn`
 
 ```bash
-cd Random Bunny
+cd random-bunny
 npm install
-cp config.json.template config.json
 ```
-And then use your text editor of choice to fill in the `config.json` file.
 
 #### Build and Run
 
@@ -332,22 +336,20 @@ If you want to understand how Random Bunny works or want to debug an issue, you'
 First, fork the Random Bunny repository so that you can make a pull request. Then, clone your fork locally:
 
 ```bash
-git clone https://gitlab.vylpes.com/<your-gitlab-account>/random-bunny.git
+git clone https://gitea.vylpes.xyz/<your-gitea-account>/random-bunny.git
 ```
 
 Occasionally, you will want to merge changes in the upstream repository (the official code repo) with your fork.
 
 ```bash
-cd Random Bunny
+cd random-bunny
 git checkout master
-git pull https://github.com/getgravitysoft/random-bunny.git master
+git pull https://gitea.vylpes.xyz/RabbitLabs/random-bunny.git master
 ```
 
 Manage any merge conflicts, commit them, and then push them to your fork.
 
-Go into `Random Bunny` and start the bot in dev mode with `npm run dev` or `node bot dev`
-
-> **Note:** If you have `nodemon` installed on your system you can use this during development so it auto restarts when you make code changes. Instead of the commands above you can then run `nodemon bot dev`.
+Go into `random-bunny` and build the package using `yarn build`.
 
 #### Pull Requests
 
@@ -368,6 +370,11 @@ Please follow these steps to have your contribution considered by maintainers:
 * When the checks have passed a maintainer will review your code and ask for any improvements or questions, and will merge it if they are satisifed.
 
 While the prerequesites above must be satisifed prior to having your pull reuqest accepted, the reviewer(s) may ask you to complete additional design ork, tests, or other changes before your pull request can be ultimately accepted.
+
+#### Submitting Changes via Email
+If you're not within our gitea instance and still like to contribute, you can send us your contributions to [git@vylpes.com](mailto:git@vylpes.com).
+
+For more information on how to do this, see the [git documentation](https://git-scm.com/docs/git-send-email).
 
 #### JavaScript Styleguide
 
