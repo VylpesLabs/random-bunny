@@ -1,0 +1,22 @@
+kind: pipeline
+name: integration
+
+steps:
+  - name: build
+    image: node
+    commands:
+      - yarn install --frozen-lockfile
+  - name: test
+    image: node
+    commands:
+      - yarn test
+    depends_on:
+      - build
+
+trigger:
+  branch:
+    - develop
+    - feature/*
+    - hotfix/*
+  event:
+    - push

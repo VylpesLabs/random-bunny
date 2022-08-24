@@ -17,7 +17,8 @@
   ],
   "dependencies": {
     "glob-parent": "^6.0.0",
-    "got": "^11.8.3"
+    "got": "^11.8.3",
+    "linqts": "^1.14.4"
   },
   "scripts": {
     "build": "tsc",
@@ -25,8 +26,11 @@
     "test": "echo none",
     "lint": "eslint ."
   },
-  "bugs": "https://github.com/Vylpes/random-bunny/issues",
-  "homepage": "https://github.com/Vylpes/random-bunny",
+  "bugs": {
+    "url": "https://gitea.vylpes.xyz/RabbitLabs/random-bunny/issues",
+    "email": "helpdesk@vylpes.com"
+  },
+  "homepage": "https://gitea.vylpes.xyz/RabbitLabs/random-bunny",
   "funding": "https://ko-fi.com/vylpes",
   "devDependencies": {
     "@types/node": "^16.11.11",

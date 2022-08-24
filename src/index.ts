@@ -1,6 +1,8 @@
-import IFetchResult from "./contracts/IFetchResult";
+import IReturnResult from "./contracts/IReturnResult";
 import IRedditResult from "./contracts/IRedditResult";
 import fetch from "got";
+import { List } from 'linqts';
+import IFetchResult from "./contracts/IFetchResult";
 
 const sortable = [
     'new',
@@ -8,7 +10,7 @@ const sortable = [
     'top'
 ];
 
-export default async function randomBunny(subreddit: string, sortBy?: string, maxTries = 100): Promise<IFetchResult> {
+export default async function randomBunny(subreddit: string, sortBy?: string, maxTries = 100): Promise<IReturnResult> {
     if (!sortBy || !sortable.includes(sortBy)) sortBy = 'hot';
 
     const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json`);
@@ -27,32 +29,37 @@ export default async function randomBunny(subreddit: string, sortBy?: string, ma
         }
     }
 
-    const data = json.data.children;
-    const size = data.length;
+    const data: IFetchResult[] = json.data.children;
+    
+    const dataWithImages = new List<IFetchResult>(data)
+        .Where(x => x!.data.url.includes('.jpg') || x!.data.url.includes('.png'))
+        .ToArray();
 
     for (let i = 0; i < maxTries; i++) {
-        const random = Math.floor((Math.random() * size - 1) + 0); // Between 0 and (size - 1)
+        const random = Math.floor((Math.random() * dataWithImages.length - 1) + 0); // Between 0 and (size - 1)
 
-        const randomSelect = data[random].data;
+        const randomSelect = dataWithImages[random];
+
+        if (!randomSelect) continue;
+
+        const randomData = randomSelect.data;
 
         const redditResult: IRedditResult = {
-            Archived: randomSelect['archived'],
-            Downs: randomSelect['downs'],
-            Hidden: randomSelect['hidden'],
-            Permalink: randomSelect['permalink'],
-            Subreddit: randomSelect['subreddit'],
-            SubredditSubscribers: randomSelect['subreddit_subscribers'],
-            Title: randomSelect['title'],
-            Ups: randomSelect['ups'],
-            Url: randomSelect['url']
+            Archived: randomData['archived'],
+            Downs: randomData['downs'],
+            Hidden: randomData['hidden'],
+            Permalink: randomData['permalink'],
+            Subreddit: randomData['subreddit'],
+            SubredditSubscribers: randomData['subreddit_subscribers'],
+            Title: randomData['title'],
+            Ups: randomData['ups'],
+            Url: randomData['url']
         };
 
-        if (redditResult.Url.includes('.jpg')) {
-            return {
-                IsSuccess: true,
-                Result: redditResult
-            };
-        }
+        return {
+            IsSuccess: true,
+            Result: redditResult
+        };
     }
 
     return {
