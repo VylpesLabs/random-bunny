@@ -53,7 +53,7 @@ The json string which gets returned consists of:
 
 ## Links
 
-* Discord: [Server Link](https://discord.gg/UyAhAVp)
+* Discord: [Server Link](https://go.vylpes.xyz/A6HcA)
 * Support: [helpdesk@vylpes.com](mailto:helpdesk@vylpes.com)
 
 ## License

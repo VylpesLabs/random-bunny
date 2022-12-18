@@ -12,7 +12,7 @@ This project and everyone participating in it is governed by the Random Bunny Co
 
 > **Note:** Please don't file an issue to ask a question. You'll get faster results by using the resources below.
 
-You can ask a question about the project in the `#development` channel in the [Discord Server](https://discord.gg/UyAhAVp).
+You can ask a question about the project in the `#development` channel in the [Discord Server](https://go.vylpes.xyz/A6HcA).
 
 You can also email with queries and support if you'd prefer at [helpdesk@vylpes.com](mailto:helpdesk@vylpes.com).
 
@@ -210,7 +210,7 @@ This project and everyone participating in it is governed by the Random Bunny Co
 
 > **Note:** Please don't file an issue to ask a question. You'll get faster results by using the resources below.
 
-You can ask a question about the project in the `#development` channel in the [Discord Server](https://discord.gg/UyAhAVp).
+You can ask a question about the project in the `#development` channel in the [Discord Server](https://go.vylpes.xyz/A6HcA).
 
 ## What you should know
 
