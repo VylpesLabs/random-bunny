@@ -33,7 +33,7 @@
   "homepage": "https://gitea.vylpes.xyz/RabbitLabs/random-bunny",
   "funding": "https://ko-fi.com/vylpes",
   "devDependencies": {
-    "@types/node": "^16.11.11",
+    "@types/node": "^18.0.0",
     "eslint": "^7.17.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
