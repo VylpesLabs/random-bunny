@@ -1,8 +1,8 @@
-import IReturnResult from "./contracts/IReturnResult";
-import IRedditResult from "./contracts/IRedditResult";
+import IReturnResult from "./contracts/IReturnResult.js";
+import IRedditResult from "./contracts/IRedditResult.js";
 import fetch from "got";
 import { List } from 'linqts';
-import IFetchResult from "./contracts/IFetchResult";
+import IFetchResult from "./contracts/IFetchResult.js";
 
 const sortable = [
     'new',
