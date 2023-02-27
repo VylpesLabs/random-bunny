@@ -1,4 +1,4 @@
-import IRedditResult from "./IRedditResult";
+import IRedditResult from "./IRedditResult.js";
 
 export default interface IReturnResult {
     IsSuccess: boolean;

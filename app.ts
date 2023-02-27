@@ -1,4 +1,4 @@
-import randomBunny from "./dist";
+import randomBunny from "./dist/index.js";
 
 async function app() {
     const result = await randomBunny('rabbits', 'hot');
