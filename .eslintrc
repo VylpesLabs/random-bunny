@@ -44,6 +44,7 @@
         "module": "writable",
         "require": "writable",
         "process": "writable",
-        "console": "writable"
+        "console": "writable",
+        "jest": "writable"
     }
 }

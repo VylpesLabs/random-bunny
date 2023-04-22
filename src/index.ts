@@ -1,6 +1,6 @@
 import IReturnResult from "./contracts/IReturnResult.js";
 import IRedditResult from "./contracts/IRedditResult.js";
-import fetch from "got";
+import fetch from "got-cjs";
 import { List } from 'linqts';
 import IFetchResult from "./contracts/IFetchResult.js";
 
@@ -35,15 +35,17 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
         .Where(x => x!.data.url.includes('.jpg') || x!.data.url.includes('.png'))
         .ToArray();
 
-    const random = Math.floor((Math.random() * dataWithImages.length - 1) + 0); // Between 0 and (size - 1)
+    let random = 0;
 
-    const randomSelect = dataWithImages[random];
-
-    if (!randomSelect) {
+    if (dataWithImages.length == 0) {
         return {
             IsSuccess: false,
         };
-    };
+    } else if (dataWithImages.length > 1) {
+        random = Math.floor((Math.random() * dataWithImages.length - 1) + 0); // Between 0 and (size - 1)
+    }
+
+    const randomSelect = dataWithImages[random];
 
     const randomData = randomSelect.data;
 

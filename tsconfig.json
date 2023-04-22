@@ -73,7 +73,9 @@
       "./src",
     ],
     "exclude": [
-      "./tests"
+      "./tests",
+      "jest.config.cjs",
+      "jest.setup.js"
     ],
     "ts-node": {
         "esm": true
