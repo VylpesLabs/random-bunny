@@ -196,7 +196,10 @@ function ban (member) {
     }).catch(err => {
         // handle error here
     });
-}# Contributing to Random Bunny
+}
+```
+
+# Contributing to Random Bunny
 
 First off, thanks for taking the time to contribute!
 
