@@ -48,6 +48,9 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.0"
   },
+  "resolutions": {
+    "np/**/got": "^11.8.5"
+  },
   "files": [
     "dist"
   ]
