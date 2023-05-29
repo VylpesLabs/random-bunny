@@ -41,8 +41,8 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
         return {
             IsSuccess: false,
         };
-    } else if (dataWithImages.length > 1) {
-        random = Math.floor((Math.random() * dataWithImages.length - 1) + 0); // Between 0 and (size - 1)
+    } else {
+        random = Math.floor((Math.random() * (dataWithImages.length - 1)) + 0); // Between 0 and (size - 1)
     }
 
     const randomSelect = dataWithImages[random];
