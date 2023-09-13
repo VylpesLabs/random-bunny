@@ -3,6 +3,8 @@ import IRedditResult from "./contracts/IRedditResult.js";
 import fetch from "got-cjs";
 import { List } from 'linqts';
 import IFetchResult from "./contracts/IFetchResult.js";
+import { ErrorCode } from "./constants/ErrorCode.js";
+import ErrorMessages from "./constants/ErrorMessages.js";
 
 const sortable = [
     'new',
@@ -17,7 +19,11 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
 
     if (!result) {
         return {
-            IsSuccess: false
+            IsSuccess: false,
+            Error: {
+                Code: ErrorCode.FailedToFetchReddit,
+                Message: ErrorMessages.FailedToFetchReddit,
+            },
         }
     }
 
@@ -25,7 +31,11 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
 
     if (!json) {
         return {
-            IsSuccess: false
+            IsSuccess: false,
+            Error: {
+                Code: ErrorCode.UnableToParseJSON,
+                Message: ErrorMessages.FailedToFetchReddit,
+            },
         }
     }
 
@@ -40,6 +50,10 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
     if (dataWithImages.length == 0) {
         return {
             IsSuccess: false,
+            Error: {
+                Code: ErrorCode.NoImageResultsFound,
+                Message: ErrorMessages.NoImageResultsFound,
+            },
         };
     } else {
         random = Math.floor((Math.random() * (dataWithImages.length - 1)) + 0); // Between 0 and (size - 1)
