@@ -1,10 +1,10 @@
-import IReturnResult from "./contracts/IReturnResult.js";
-import IRedditResult from "./contracts/IRedditResult.js";
+import IReturnResult from "./contracts/IReturnResult";
+import IRedditResult from "./contracts/IRedditResult";
 import fetch from "got-cjs";
 import { List } from 'linqts';
-import IFetchResult from "./contracts/IFetchResult.js";
-import { ErrorCode } from "./constants/ErrorCode.js";
-import ErrorMessages from "./constants/ErrorMessages.js";
+import IFetchResult from "./contracts/IFetchResult";
+import { ErrorCode } from "./constants/ErrorCode";
+import ErrorMessages from "./constants/ErrorMessages";
 
 const sortable = [
     'new',
@@ -34,7 +34,7 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
             IsSuccess: false,
             Error: {
                 Code: ErrorCode.UnableToParseJSON,
-                Message: ErrorMessages.FailedToFetchReddit,
+                Message: ErrorMessages.UnableToParseJSON,
             },
         }
     }
