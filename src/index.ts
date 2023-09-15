@@ -10,8 +10,8 @@ const sortable = [
     'top'
 ];
 
-export default async function randomBunny(subreddit: string, sortBy?: string): Promise<IReturnResult> {
-    if (!sortBy || !sortable.includes(sortBy)) sortBy = 'hot';
+export default async function randomBunny(subreddit: string, sortBy: string = 'hot'): Promise<IReturnResult> {
+    if (!sortable.includes(sortBy)) sortBy = 'hot';
 
     const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json`);
 
