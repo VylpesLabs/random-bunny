@@ -1,3 +1,5 @@
+import { ErrorCode } from "../src/constants/ErrorCode";
+import ErrorMessages from "../src/constants/ErrorMessages";
 import randomBunny from "../src/index";
 import fetch from "got-cjs";
 
@@ -32,6 +34,7 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeTruthy();
         expect(result.Result).toBeDefined();
+        expect(result.Error).toBeUndefined();
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
     });
@@ -63,6 +66,7 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeTruthy();
         expect(result.Result).toBeDefined();
+        expect(result.Error).toBeUndefined();
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json');
     });
@@ -94,6 +98,7 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeTruthy();
         expect(result.Result).toBeDefined();
+        expect(result.Error).toBeUndefined();
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json');
     });
@@ -105,6 +110,10 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
+        expect(result.Error).toBeDefined();
+
+        expect(result.Error!.Code).toBe(ErrorCode.FailedToFetchReddit);
+        expect(result.Error!.Message).toBe(ErrorMessages.FailedToFetchReddit);
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
     });
@@ -118,6 +127,10 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
+        expect(result.Error).toBeDefined();
+
+        expect(result.Error!.Code).toBe(ErrorCode.UnableToParseJSON);
+        expect(result.Error!.Message).toBe(ErrorMessages.UnableToParseJSON);
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
     });
@@ -135,6 +148,10 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
+        expect(result.Error).toBeDefined();
+
+        expect(result.Error!.Code).toBe(ErrorCode.NoImageResultsFound);
+        expect(result.Error!.Message).toBe(ErrorMessages.NoImageResultsFound);
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
     });
@@ -166,6 +183,10 @@ describe('randomBunny', () => {
 
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
+        expect(result.Error).toBeDefined();
+
+        expect(result.Error!.Code).toBe(ErrorCode.NoImageResultsFound);
+        expect(result.Error!.Message).toBe(ErrorMessages.NoImageResultsFound);
 
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
     });
