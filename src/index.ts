@@ -15,7 +15,13 @@ const sortable = [
 export default async function randomBunny(subreddit: string, sortBy: string = 'hot'): Promise<IReturnResult> {
     if (!sortable.includes(sortBy)) sortBy = 'hot';
 
-    const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json`);
+    const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json`)
+        .then((res) => {
+            return res;
+        })
+        .catch(() => {
+            return null;
+        });
 
     if (!result) {
         return {

@@ -1,7 +1,7 @@
 import { ErrorCode } from "../src/constants/ErrorCode";
 import ErrorMessages from "../src/constants/ErrorMessages";
 import randomBunny from "../src/index";
-import fetch from "got-cjs";
+import fetch, { CancelableRequest } from "got-cjs";
 
 jest.mock('got-cjs');
 const fetchMock = jest.mocked(fetch);
@@ -104,7 +104,7 @@ describe('randomBunny', () => {
     });
 
     test('GIVEN the fetch fails, EXPECT failure result', async () => {
-        fetchMock.mockResolvedValue(null);
+        fetchMock.mockRejectedValue('Test Reason')
 
         const result = await randomBunny('rabbits', 'new');
 
