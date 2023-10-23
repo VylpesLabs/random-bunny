@@ -35,6 +35,6 @@ jobs:
             node-version: 18
         - run: yarn install --frozen-lockfile
         - run: yarn build
-        - uses: JS-DevTools/npm-publish@v1
+        - uses: JS-DevTools/npm-publish@v3
           with:
             token: ${{ secrets.NPM_TOKEN }}
