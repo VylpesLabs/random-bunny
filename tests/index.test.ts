@@ -1,7 +1,7 @@
 import { ErrorCode } from "../src/constants/ErrorCode";
 import ErrorMessages from "../src/constants/ErrorMessages";
 import randomBunny from "../src/index";
-import fetch, { CancelableRequest } from "got-cjs";
+import fetch from "got-cjs";
 
 jest.mock('got-cjs');
 const fetchMock = jest.mocked(fetch);
