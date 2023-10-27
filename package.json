@@ -16,6 +16,7 @@
     "placeholder"
   ],
   "dependencies": {
+    "commander": "^11.1.0",
     "glob-parent": "^6.0.0",
     "got-cjs": "^12.5.4",
     "linqts": "^1.14.4"
@@ -23,6 +24,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node app.ts",
+    "cli": "ts-node src/cli.ts",
     "test": "jest",
     "lint": "eslint .",
     "release": "np --no-publish"
