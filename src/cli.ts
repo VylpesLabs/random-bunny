@@ -1,4 +1,4 @@
-import { Command } from "commander";
+import { Command, Option } from "commander";
 import randomBunny from "./index";
 import ICliOptions from "./contracts/ICliOptions";
 import { exit } from "process";
@@ -9,13 +9,15 @@ program
     .name('random-bunny')
     .description('Get a random image url from a subreddit of your choosing')
     .version('2.2')
-    .option('-s, --subreddit <subreddit>', 'The subreddit to search', 'rabbits');
+    .option('-s, --subreddit <subreddit>', 'The subreddit to search', 'rabbits')
+    .option('-q, --query-metadata', 'Include query metadata in result')
+    .addOption(new Option('--sort <sort>', 'Sort by').default('hot').choices(['hot', 'new', 'top']));
 
 program.parse();
 
 const options: ICliOptions = program.opts();
 
-randomBunny(options.subreddit)
+randomBunny(options.subreddit, options.sort)
     .then((response) => {
         if (response.IsSuccess) {
             const result = response.Result!;
@@ -30,6 +32,11 @@ randomBunny(options.subreddit)
             outputLines.push(`Title = ${result.Title}`);
             outputLines.push(`Upvotes = ${result.Ups}`);
             outputLines.push(`Url = ${result.Url}`);
+
+            if (options.queryMetadata != null) {
+                outputLines.push(`Query.Subreddit = ${response.Query.subreddit}`);
+                outputLines.push(`Query.Sort By = ${response.Query.sortBy}`);
+            }
 
             console.log(outputLines.join("\n"));
             exit(0);

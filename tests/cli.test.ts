@@ -88,7 +88,65 @@ describe('subreddit', () => {
 
         expect(subreddit).toBe('Horses');
     }, 5000);
-})
+});
+
+describe('sort', () => {
+    test('GIVEN --sort is not supplird, EXPECT sort to be defaulted', async () => {
+        const result = await cli(['-q'], '.');
+
+        const sortBy = result.stdout.split('\n')
+            .find(x => x && x.length > 0 && x.split(' = ')[0] == 'Query.Sort By')!
+            .split(' = ')[1];
+
+        expect(sortBy).toBe('hot');
+    }, 5000);
+
+    test('GIVEN --sort is supplied WITH a valid input, EXPECT sort to be used', async () => {
+        const result = await cli(['-q', '--sort', 'new'], '.');
+
+        const sortBy = result.stdout.split('\n')
+            .find(x => x && x.length > 0 && x.split(' = ')[0] == 'Query.Sort By')!
+            .split(' = ')[1];
+
+        expect(sortBy).toBe('new');
+    }, 5000);
+
+    test('GIVEN --sort is supplied WITH an invalid input, EXPECT error', async () => {
+        const result = await cli(['-q', '--sort', 'invalid'], '.');
+
+        expect(result.code).toBe(1);
+        expect(result.stderr).toBe("error: option '--sort <sort>' argument 'invalid' is invalid. Allowed choices are hot, new, top.\n");
+    });
+});
+
+describe('query-metadata', () => {
+    test('GIVEN --query-metadata is not supplied, EXPECT no query metadata returned', async () => {
+        const result = await cli([], '.');
+
+        const query = result.stdout.split('\n')
+            .find(x => x && x.length > 0 && x.split(' = ')[0].startsWith('Query'));
+
+        expect(query).toBeUndefined();
+    }, 5000);
+
+    test('GIVEN --query-metadata is not supplied, EXPECT no query metadata returned', async () => {
+        const result = await cli(['--query-metadata'], '.');
+
+        const query = result.stdout.split('\n')
+            .find(x => x && x.length > 0 && x.split(' = ')[0].startsWith('Query'));
+
+        expect(query).toBeDefined();
+    }, 5000);
+
+    test('GIVEN -q is not supplied, EXPECT no query metadata returned', async () => {
+        const result = await cli(['-q'], '.');
+
+        const query = result.stdout.split('\n')
+            .find(x => x && x.length > 0 && x.split(' = ')[0].startsWith('Query'));
+
+        expect(query).toBeDefined();
+    }, 5000);
+});
 
 function cli(args: string[], cwd: string): Promise<cliResult> {
     return new Promise(resolve => {

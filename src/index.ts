@@ -26,6 +26,10 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
     if (!result) {
         return {
             IsSuccess: false,
+            Query: {
+                subreddit: subreddit,
+                sortBy: sortBy,
+            },
             Error: {
                 Code: ErrorCode.FailedToFetchReddit,
                 Message: ErrorMessages.FailedToFetchReddit,
@@ -38,6 +42,10 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
     if (!json) {
         return {
             IsSuccess: false,
+            Query: {
+                subreddit: subreddit,
+                sortBy: sortBy,
+            },
             Error: {
                 Code: ErrorCode.UnableToParseJSON,
                 Message: ErrorMessages.UnableToParseJSON,
@@ -56,6 +64,10 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
     if (dataWithImages.length == 0) {
         return {
             IsSuccess: false,
+            Query: {
+                subreddit: subreddit,
+                sortBy: sortBy,
+            },
             Error: {
                 Code: ErrorCode.NoImageResultsFound,
                 Message: ErrorMessages.NoImageResultsFound,
@@ -83,6 +95,10 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
 
     return {
         IsSuccess: true,
+        Query: {
+            subreddit: subreddit,
+            sortBy: sortBy,
+        },
         Result: redditResult
     };
 }
