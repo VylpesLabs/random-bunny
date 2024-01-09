@@ -70,28 +70,28 @@ describe('subreddit', () => {
     }, 5000);
 
     test('GIVEN -s is supplied, EXPECT subreddit to be changed', async () => {
-        const result = await cli(['-s', 'horses'], '.');
+        const result = await cli(['-s', 'pics'], '.');
 
         const subreddit = result.stdout.split('\n')
             .find(x => x && x.length > 0 && x.split(' = ')[0] == 'Subreddit')!
             .split(' = ')[1];
 
-        expect(subreddit).toBe('Horses');
+        expect(subreddit).toBe('pics');
     }, 5000);
 
     test('GIVEN --subreddit is supplied, EXPECT subreddit to be changed', async () => {
-        const result = await cli(['--subreddit', 'horses'], '.');
+        const result = await cli(['--subreddit', 'pics'], '.');
 
         const subreddit = result.stdout.split('\n')
             .find(x => x && x.length > 0 && x.split(' = ')[0] == 'Subreddit')!
             .split(' = ')[1];
 
-        expect(subreddit).toBe('Horses');
+        expect(subreddit).toBe('pics');
     }, 5000);
 });
 
 describe('sort', () => {
-    test('GIVEN --sort is not supplird, EXPECT sort to be defaulted', async () => {
+    test('GIVEN --sort is not supplied, EXPECT sort to be defaulted', async () => {
         const result = await cli(['-q'], '.');
 
         const sortBy = result.stdout.split('\n')
