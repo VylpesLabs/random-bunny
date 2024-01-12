@@ -36,7 +36,7 @@ describe('randomBunny', () => {
         expect(result.Result).toBeDefined();
         expect(result.Error).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN sortBy is NOT supplied, expect it to default to hot', async () => {
@@ -68,7 +68,7 @@ describe('randomBunny', () => {
         expect(result.Result).toBeDefined();
         expect(result.Error).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json?limit=100');
     });
 
     test('GIVEN sortBy is NOT valid, expect it to default to hot', async () => {
@@ -100,7 +100,7 @@ describe('randomBunny', () => {
         expect(result.Result).toBeDefined();
         expect(result.Error).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json?limit=100');
     });
 
     test('GIVEN the fetch fails, EXPECT failure result', async () => {
@@ -115,7 +115,7 @@ describe('randomBunny', () => {
         expect(result.Error!.Code).toBe(ErrorCode.FailedToFetchReddit);
         expect(result.Error!.Message).toBe(ErrorMessages.FailedToFetchReddit);
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN the result is NOT valid JSON, EXPECT failure result', async () => {
@@ -132,7 +132,7 @@ describe('randomBunny', () => {
         expect(result.Error!.Code).toBe(ErrorCode.UnableToParseJSON);
         expect(result.Error!.Message).toBe(ErrorMessages.UnableToParseJSON);
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN randomSelect does NOT find a response, EXPECT failure result', async () => {
@@ -153,7 +153,7 @@ describe('randomBunny', () => {
         expect(result.Error!.Code).toBe(ErrorCode.NoImageResultsFound);
         expect(result.Error!.Message).toBe(ErrorMessages.NoImageResultsFound);
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN randomSelect does NOT find a valid response, EXPECT failure result', async () => {
@@ -188,6 +188,6 @@ describe('randomBunny', () => {
         expect(result.Error!.Code).toBe(ErrorCode.NoImageResultsFound);
         expect(result.Error!.Message).toBe(ErrorMessages.NoImageResultsFound);
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 });
