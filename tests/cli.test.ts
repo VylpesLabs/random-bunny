@@ -90,6 +90,24 @@ describe('subreddit', () => {
     }, 5000);
 });
 
+describe('json', () => {
+    test('GIVEN -j is supplied, EXPECT output to be valid JSON', async () => {
+        const result = await cli(['-j'], '.');
+
+        const json = JSON.parse(result.stdout);
+
+        expect(json).toBeDefined();
+    }, 5000);
+
+    test('GIVEN --json is supplied, EXPECT output to be valid JSON', async () => {
+        const result = await cli(['--json'], '.');
+
+        const json = JSON.parse(result.stdout);
+
+        expect(json).toBeDefined();
+    }, 5000);
+});
+
 describe('sort', () => {
     test('GIVEN --sort is not supplied, EXPECT sort to be defaulted', async () => {
         const result = await cli(['-q'], '.');
@@ -116,7 +134,7 @@ describe('sort', () => {
 
         expect(result.code).toBe(1);
         expect(result.stderr).toBe("error: option '--sort <sort>' argument 'invalid' is invalid. Allowed choices are hot, new, top.\n");
-    });
+    }, 5000);
 });
 
 describe('query-metadata', () => {

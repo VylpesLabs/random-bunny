@@ -10,6 +10,7 @@ program
     .description('Get a random image url from a subreddit of your choosing')
     .version('2.2')
     .option('-s, --subreddit <subreddit>', 'The subreddit to search', 'rabbits')
+    .option('-j, --json', 'Output as JSON')
     .option('-q, --query-metadata', 'Include query metadata in result')
     .addOption(new Option('--sort <sort>', 'Sort by').default('hot').choices(['hot', 'new', 'top']));
 
@@ -23,6 +24,12 @@ randomBunny(options.subreddit, options.sort)
             const result = response.Result!;
 
             const outputLines: string[] = [];
+
+            if (options.json) {
+                console.log(JSON.stringify(result));
+                return;
+            }
+
             outputLines.push(`Archived = ${result.Archived}`);
             outputLines.push(`Downvotes = ${result.Downs}`);
             outputLines.push(`Hidden = ${result.Hidden}`);
