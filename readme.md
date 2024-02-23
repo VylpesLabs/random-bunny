@@ -44,6 +44,12 @@ The json string which gets returned consists of:
 
 `sortBy` will default to 'hot' if not given or invalid
 
+## CLI
+
+Random bunny can also be used as a CLI. This is accessible via the executable (see git releases) or via `src/cli.ts`
+
+For more details, see the documentation.
+
 ## Notes
 
 * Node 4 or newer.
