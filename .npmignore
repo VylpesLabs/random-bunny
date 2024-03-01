@@ -1,5 +1,5 @@
-app.ts
-
+src/
+bin/
 tests/
 jest.config.cjs
 jest.setup.js

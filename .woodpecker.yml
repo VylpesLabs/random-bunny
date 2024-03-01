@@ -1,5 +1,6 @@
 steps:
   build:
+    # Build and test
     image: node
     commands:
     - yarn install --frozen-lockfile
@@ -21,6 +22,48 @@ steps:
     when:
       event: [ push, pull_request ]
       branch: [ hotfix/*, feature/*, renovate/*, develop, main ]
+
+  # Package production build
+  package_prod:
+    image: node
+    commands:
+    - yarn package
+    when:
+      event: tag
+      branch: main
+  rsync_prod:
+    image: alpine
+    secrets: [ ssh_key ]
+    commands:
+      - apk add rsync openssh-client
+      - eval `ssh-agent -s`
+      - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
+      - rsync -e "ssh -o StrictHostKeyChecking=no" -r ./bin vylpes@192.168.68.120:/home/vylpes/apps/random-bunny/random-bunny_prod
+    when:
+      event: tag
+      branch: main
+
+  # Package stage build
+  package_stage:
+    image: node
+    commands:
+    - yarn package
+    when:
+      event: push
+      branch: develop
+  rsync_stage:
+    image: alpine
+    secrets: [ ssh_key ]
+    commands:
+      - apk add rsync openssh-client
+      - eval `ssh-agent -s`
+      - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
+      - rsync -e "ssh -o StrictHostKeyChecking=no" -r ./bin vylpes@192.168.68.120:/home/vylpes/apps/random-bunny/random-bunny_stage
+    when:
+      event: push
+      branch: develop
+
+  # Publish to NPM
   publish:
     image: plugins/npm
     settings:
