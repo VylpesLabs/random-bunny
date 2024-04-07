@@ -3,6 +3,7 @@ import IRedditResult from "./contracts/IRedditResult.js";
 import fetch from "got-cjs";
 import { List } from 'linqts';
 import IFetchResult from "./contracts/IFetchResult.js";
+import ImageHelper from "./imageHelper";
 
 const sortable = [
     'new',
@@ -13,7 +14,7 @@ const sortable = [
 export default async function randomBunny(subreddit: string, sortBy?: string): Promise<IReturnResult> {
     if (!sortBy || !sortable.includes(sortBy)) sortBy = 'hot';
 
-    const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json`);
+    const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json?limit=100`);
 
     if (!result) {
         return {
@@ -32,7 +33,7 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
     const data: IFetchResult[] = json.data.children;
 
     const dataWithImages = new List<IFetchResult>(data)
-        .Where(x => x!.data.url.includes('.jpg') || x!.data.url.includes('.png'))
+        .Where(x => x!.data.url.includes('.jpg') || x!.data.url.includes('.png') || x!.data.url.includes("/gallery/"))
         .ToArray();
 
     let random = 0;
@@ -49,6 +50,22 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
 
     const randomData = randomSelect.data;
 
+    let url: string;
+
+    if (randomData.url.includes("/gallery")) {
+        const galleryImage = await ImageHelper.FetchImageFromRedditGallery(randomData.url);
+
+        if (!galleryImage) {
+            return {
+                IsSuccess: false,
+            }
+        }
+
+        url = galleryImage;
+    } else {
+        url = randomData.url;
+    }
+
     const redditResult: IRedditResult = {
         Archived: randomData['archived'],
         Downs: randomData['downs'],
@@ -58,7 +75,7 @@ export default async function randomBunny(subreddit: string, sortBy?: string): P
         SubredditSubscribers: randomData['subreddit_subscribers'],
         Title: randomData['title'],
         Ups: randomData['ups'],
-        Url: randomData['url']
+        Url: url,
     };
 
     return {

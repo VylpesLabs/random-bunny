@@ -18,6 +18,7 @@
   "dependencies": {
     "glob-parent": "^6.0.0",
     "got-cjs": "^12.5.4",
+    "htmlparser2": "^9.1.0",
     "linqts": "^1.14.4"
   },
   "scripts": {

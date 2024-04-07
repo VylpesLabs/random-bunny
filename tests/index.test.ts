@@ -33,7 +33,7 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeTruthy();
         expect(result.Result).toBeDefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN sortBy is NOT supplied, expect it to default to hot', async () => {
@@ -64,7 +64,7 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeTruthy();
         expect(result.Result).toBeDefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json?limit=100');
     });
 
     test('GIVEN sortBy is NOT valid, expect it to default to hot', async () => {
@@ -95,7 +95,7 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeTruthy();
         expect(result.Result).toBeDefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/hot.json?limit=100');
     });
 
     test('GIVEN the fetch fails, EXPECT failure result', async () => {
@@ -106,7 +106,7 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN the result is NOT valid JSON, EXPECT failure result', async () => {
@@ -119,7 +119,7 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN randomSelect does NOT find a response, EXPECT failure result', async () => {
@@ -136,7 +136,7 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN randomSelect does NOT find a valid response, EXPECT failure result', async () => {
@@ -167,6 +167,12 @@ describe('randomBunny', () => {
         expect(result.IsSuccess).toBeFalsy();
         expect(result.Result).toBeUndefined();
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json');
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
+
+    test.todo("GIVEN data fetched is a gallery AND an image is returned from the helper, EXPECT this to be used");
+
+    test.todo("GIVEN data fetched is a gallery AND an image is not returned from the helper, EXPECT error");
+
+    test.todo("GIVEN data fetched is not a gallery, EXPECT url to be used directly");
 });
