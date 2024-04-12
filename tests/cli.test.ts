@@ -147,7 +147,7 @@ describe('query-metadata', () => {
         expect(query).toBeUndefined();
     }, 5000);
 
-    test('GIVEN --query-metadata is not supplied, EXPECT no query metadata returned', async () => {
+    test('GIVEN --query-metadata is supplied, EXPECT query metadata returned', async () => {
         const result = await cli(['--query-metadata'], '.');
 
         const query = result.stdout.split('\n')
@@ -156,7 +156,7 @@ describe('query-metadata', () => {
         expect(query).toBeDefined();
     }, 5000);
 
-    test('GIVEN -q is not supplied, EXPECT no query metadata returned', async () => {
+    test('GIVEN -q is supplied, EXPECT query metadata returned', async () => {
         const result = await cli(['-q'], '.');
 
         const query = result.stdout.split('\n')
