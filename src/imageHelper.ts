@@ -5,7 +5,7 @@ export default class ImageHelper {
     public static async FetchImageFromRedditGallery(url: string): Promise<string | undefined> {
         const fetched = await fetch(url);
 
-        if (!fetched) {
+        if (!fetched || fetched.errored || fetched.statusCode != 200) {
             return undefined;
         }
 

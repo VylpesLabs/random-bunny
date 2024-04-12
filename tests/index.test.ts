@@ -1,3 +1,4 @@
+import ImageHelper from "../src/imageHelper";
 import randomBunny from "../src/index";
 import fetch from "got-cjs";
 
@@ -170,9 +171,71 @@ describe('randomBunny', () => {
         expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
-    test.todo("GIVEN data fetched is a gallery AND an image is returned from the helper, EXPECT this to be used");
+    test("GIVEN data fetched is a gallery AND an image is returned from the helper, EXPECT this to be used", async () => {
+        fetchMock.mockResolvedValue({
+            body: JSON.stringify({
+                data: {
+                    children: [
+                        {
+                            data: {
+                                archived: false,
+                                downs: 0,
+                                hidden: false,
+                                permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
+                                subreddit: 'Rabbits',
+                                subreddit_subscribers: 298713,
+                                title: 'Someone told pickles it’s Monday… *internal fury*',
+                                ups: 1208,
+                                url: 'https://i.redd.it/gallery/cr8xudsnkgua1',
+                            },
+                        },
+                    ],
+                }
+            }),
+        });
 
-    test.todo("GIVEN data fetched is a gallery AND an image is not returned from the helper, EXPECT error");
+        ImageHelper.FetchImageFromRedditGallery = jest.fn().mockResolvedValue("https://i.redd.it/cr8xudsnkgua1.jpg")
 
-    test.todo("GIVEN data fetched is not a gallery, EXPECT url to be used directly");
+        const result = await randomBunny('rabbits', 'new');
+
+        expect(result.IsSuccess).toBeTruthy();
+        expect(result.Result).toBeDefined();
+
+        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
+
+        expect(ImageHelper.FetchImageFromRedditGallery).toHaveBeenCalledTimes(1);
+        expect(ImageHelper.FetchImageFromRedditGallery).toHaveBeenCalledWith("https://i.redd.it/gallery/cr8xudsnkgua1")
+    });
+
+    test("GIVEN data fetched is a gallery AND an image is not returned from the helper, EXPECT error", async () => {
+        fetchMock.mockResolvedValue({
+            body: JSON.stringify({
+                data: {
+                    children: [
+                        {
+                            data: {
+                                archived: false,
+                                downs: 0,
+                                hidden: false,
+                                permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
+                                subreddit: 'Rabbits',
+                                subreddit_subscribers: 298713,
+                                title: 'Someone told pickles it’s Monday… *internal fury*',
+                                ups: 1208,
+                                url: 'https://i.redd.it/gallery/cr8xudsnkgua1',
+                            },
+                        },
+                    ],
+                }
+            }),
+        });
+
+        ImageHelper.FetchImageFromRedditGallery = jest.fn().mockResolvedValue(undefined)
+
+        const result = await randomBunny('rabbits', 'new');
+
+        expect(ImageHelper.FetchImageFromRedditGallery).toHaveBeenCalledTimes(1);
+
+        expect(result.IsSuccess).toBe(false);
+    });
 });
