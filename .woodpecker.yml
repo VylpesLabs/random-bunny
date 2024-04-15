@@ -27,6 +27,11 @@ steps:
   package_prod:
     image: node
     commands:
+    - apt install unzip -y
+    - wget https://github.com/xerub/ldid/releases/download/42/ldid.zip
+    - unzip ldid.zip
+    - cp linux64/ldid /opt/ldid
+    - export PATH=/opt/ldid:$PATH
     - yarn package
     when:
       event: tag
@@ -47,6 +52,11 @@ steps:
   package_stage:
     image: node
     commands:
+    - apt install unzip -y
+    - wget https://github.com/xerub/ldid/releases/download/42/ldid.zip
+    - unzip ldid.zip
+    - cp linux64/ldid /opt/ldid
+    - export PATH=/opt/ldid:$PATH
     - yarn package
     when:
       event: push
