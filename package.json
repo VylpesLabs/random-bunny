@@ -30,7 +30,7 @@
     "test": "jest",
     "lint": "eslint .",
     "release": "np --no-publish",
-    "package": "pkg ."
+    "package": "pkg . --no-bytecode"
   },
   "bugs": {
     "url": "https://gitea.vylpes.xyz/RabbitLabs/random-bunny/issues",
