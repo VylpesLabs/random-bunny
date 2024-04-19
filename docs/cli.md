@@ -2,6 +2,19 @@
 
 Since Version 2.2, Random Bunny contains a command line interface (CLI).
 
+## Downloads
+
+The project can be downloaded as a binary for your system via the [GitHub Releases](https://github.com/Vylpes/random-bunny/releases) or [Gitea Releases](https://gitea.vylpes.xyz/RabbitLabs/random-bunny/releases) page.
+
+We currently support:
+- Linux (x64)
+- Windows (x64)
+- macOS (x64, Arm64\*)
+
+The git repository can also be cloned and ran via `yarn build` and `yarn start`.
+
+> **NOTE:** We are aware of a bug in the macOS Arm64 builds failing to execute. For now you're still able to use the x64 builds under Rosetta fine. This will hopefully be fixed in a future release.
+
 ## Default Output
 
 By default, the command will fetch a random image from `r/rabbits` and return it in a human-readable output.

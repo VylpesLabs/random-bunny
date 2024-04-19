@@ -14,6 +14,10 @@ or if you're using yarn
 yarn add random-bunny
 ```
 
+### Binary
+
+The project can be downloaded as a binary for your system via the [GitHub Releases](https://github.com/Vylpes/random-bunny/releases) or [Gitea Releases](https://gitea.vylpes.xyz/RabbitLabs/random-bunny/releases) page.
+
 
 ## Usage
 
@@ -48,7 +52,7 @@ The json string which gets returned consists of:
 
 Random bunny can also be used as a CLI. This is accessible via the executable (see git releases) or via `src/cli.ts`
 
-For more details, see the documentation.
+For more details, see the [documentation](https://docs.vylpes.xyz/books/random-bunny).
 
 ## Notes
 
