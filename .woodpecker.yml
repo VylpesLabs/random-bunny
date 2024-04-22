@@ -85,7 +85,7 @@ steps:
         from_secret: NPM_EMAIL
       password:
         from_secret: NPM_PASSWORD
-      api_key:
+      token:
         from_secret: NPM_TOKEN
     when:
       event: push
