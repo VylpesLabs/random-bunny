@@ -7,21 +7,21 @@ steps:
     - yarn build
     when:
       event: [ push, pull_request ]
-      branch: [ hotfix/*, feature/*, renovate/*, develop, main ]
+      branch: [ hotfix/*, feature/*, renovate/*, develop, master ]
   lint:
     image: node
     commands:
     - yarn lint
     when:
       event: [ push, pull_request ]
-      branch: [ hotfix/*, feature/*, renovate/*, develop, main ]
+      branch: [ hotfix/*, feature/*, renovate/*, develop, master ]
   test:
     image: node
     commands:
     - yarn test
     when:
       event: [ push, pull_request ]
-      branch: [ hotfix/*, feature/*, renovate/*, develop, main ]
+      branch: [ hotfix/*, feature/*, renovate/*, develop, master ]
 
   # Package production build
   package_prod:
@@ -36,7 +36,7 @@ steps:
     - yarn package
     when:
       event: push
-      branch: main
+      branch: master
   rsync_prod:
     image: alpine
     secrets: [ ssh_key ]
@@ -47,7 +47,7 @@ steps:
       - rsync -e "ssh -o StrictHostKeyChecking=no" -r ./bin vylpes@192.168.1.115:/home/vylpes/apps/random-bunny/random-bunny_prod
     when:
       event: push
-      branch: main
+      branch: master
 
   # Package stage build
   package_stage:
@@ -88,5 +88,5 @@ steps:
       api_key:
         from_secret: NPM_TOKEN
     when:
-      event: tag
-      branch: main
+      event: push
+      branch: master
