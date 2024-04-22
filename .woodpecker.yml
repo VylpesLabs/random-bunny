@@ -35,7 +35,7 @@ steps:
     - export PATH=/opt/ldid:$PATH
     - yarn package
     when:
-      event: tag
+      event: push
       branch: main
   rsync_prod:
     image: alpine
@@ -46,7 +46,7 @@ steps:
       - echo "$SSH_KEY" | tr -d '\r' | ssh-add -
       - rsync -e "ssh -o StrictHostKeyChecking=no" -r ./bin vylpes@192.168.1.115:/home/vylpes/apps/random-bunny/random-bunny_prod
     when:
-      event: tag
+      event: push
       branch: main
 
   # Package stage build
