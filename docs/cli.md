@@ -53,9 +53,9 @@ Options:
   -s, --subreddit <subreddit>  The subreddit to search (default: "rabbits")
   -j, --json                   Output as JSON
   -q, --query-metadata         Include query metadata in result
+  -o <file>                    Output to file
   --sort <sort>                Sort by (choices: "hot", "new", "top", default: "hot")
   -h, --help                   display help for command
-✨  Done in 0.32s.
 ```
 
 ## JSON output
@@ -94,4 +94,12 @@ This defaults to "rabbits"
 ```
 $ randombunny --subreddit rabbits
 $ randombunny -s horses
+```
+
+## Output to file
+
+If you'd rather send the output to a file, you can supply the `-o` flag.
+
+```
+$ randombunny -o ~/Desktop/output.txt
 ```

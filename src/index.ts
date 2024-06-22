@@ -5,17 +5,9 @@ import { List } from 'linqts';
 import IFetchResult from "./contracts/IFetchResult";
 import { ErrorCode } from "./constants/ErrorCode";
 import ErrorMessages from "./constants/ErrorMessages";
-import ImageHelper from "./imageHelper";
+import ImageHelper from "./helpers/imageHelper";
 
-const sortable = [
-    'new',
-    'hot',
-    'top'
-];
-
-export default async function randomBunny(subreddit: string, sortBy: string = 'hot'): Promise<IReturnResult> {
-    if (!sortable.includes(sortBy)) sortBy = 'hot';
-
+export default async function randomBunny(subreddit: string, sortBy: "new" | "hot" | "top" = 'hot'): Promise<IReturnResult> {
     const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json?limit=100`)
         .then((res) => {
             return res;
