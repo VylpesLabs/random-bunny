@@ -33,7 +33,7 @@ console.log(result);
 
 ### `randomBunny()`
 
-Returns a `json string` for a random post. Accepts 2 arguments: `subreddit`, and `sortby` ('new', 'hot', 'top')
+Returns a `json string` for a random post. Accepts 3 arguments: `subreddit`, `sortby` ('new', 'hot', 'top'), and `limit` (1-100, default 100)
 
 The json string which gets returned consists of:
 - archived

@@ -7,6 +7,10 @@ import fetch from "got-cjs";
 jest.mock('got-cjs');
 const fetchMock = jest.mocked(fetch);
 
+beforeEach(() => {
+    fetchMock.mockReset();
+});
+
 describe('randomBunny', () => {
     test('GIVEN subreddit AND sortBy is supplied, EXPECT successful result', async() => {
         fetchMock.mockResolvedValue({
@@ -230,5 +234,107 @@ describe('randomBunny', () => {
         expect(result.Error).toBeDefined();
         expect(result.Error?.Code).toBe(ErrorCode.NoImageResultsFound);
         expect(result.Error?.Message).toBe(ErrorMessages.NoImageResultsFound);
+    });
+
+    test("GIVEN limit is supplied, EXPECT limit sent to the API", async () => {
+        fetchMock.mockResolvedValue({
+            body: JSON.stringify({
+                data: {
+                    children: [
+                        {
+                            data: {
+                                archived: false,
+                                downs: 0,
+                                hidden: false,
+                                permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
+                                subreddit: 'Rabbits',
+                                subreddit_subscribers: 298713,
+                                title: 'Someone told pickles it’s Monday… *internal fury*',
+                                ups: 1208,
+                                url: 'https://i.redd.it/cr8xudsnkgua1.jpg',
+                            },
+                        },
+                    ],
+                }
+            }),
+        });
+
+        const result = await randomBunny('rabbits', 'new', 50);
+
+        expect(result.IsSuccess).toBeTruthy();
+        expect(result.Result).toBeDefined();
+        expect(result.Error).toBeUndefined();
+
+        expect(fetchMock).toHaveBeenCalledWith('https://reddit.com/r/rabbits/new.json?limit=50');
+    });
+
+    test("GIVEN limit is less than 1, EXPECT error to be returned", async () => {
+        fetchMock.mockResolvedValue({
+            body: JSON.stringify({
+                data: {
+                    children: [
+                        {
+                            data: {
+                                archived: false,
+                                downs: 0,
+                                hidden: false,
+                                permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
+                                subreddit: 'Rabbits',
+                                subreddit_subscribers: 298713,
+                                title: 'Someone told pickles it’s Monday… *internal fury*',
+                                ups: 1208,
+                                url: 'https://i.redd.it/cr8xudsnkgua1.jpg',
+                            },
+                        },
+                    ],
+                }
+            }),
+        });
+
+        const result = await randomBunny('rabbits', 'new', 0);
+
+        expect(result.IsSuccess).toBeFalsy();
+        expect(result.Result).toBeUndefined();
+        expect(result.Error).toBeDefined();
+
+        expect(result.Error!.Code).toBe(ErrorCode.LimitOutOfRange);
+        expect(result.Error!.Message).toBe(ErrorMessages.LimitOutOfRange);
+
+        expect(fetchMock).not.toHaveBeenCalled();
+    });
+
+    test("GIVEN limit is greater than 100, EXPECT error to be returned", async () => {
+        fetchMock.mockResolvedValue({
+            body: JSON.stringify({
+                data: {
+                    children: [
+                        {
+                            data: {
+                                archived: false,
+                                downs: 0,
+                                hidden: false,
+                                permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
+                                subreddit: 'Rabbits',
+                                subreddit_subscribers: 298713,
+                                title: 'Someone told pickles it’s Monday… *internal fury*',
+                                ups: 1208,
+                                url: 'https://i.redd.it/cr8xudsnkgua1.jpg',
+                            },
+                        },
+                    ],
+                }
+            }),
+        });
+
+        const result = await randomBunny('rabbits', 'new', 101);
+
+        expect(result.IsSuccess).toBeFalsy();
+        expect(result.Result).toBeUndefined();
+        expect(result.Error).toBeDefined();
+
+        expect(result.Error!.Code).toBe(ErrorCode.LimitOutOfRange);
+        expect(result.Error!.Message).toBe(ErrorMessages.LimitOutOfRange);
+
+        expect(fetchMock).not.toHaveBeenCalled();
     });
 });

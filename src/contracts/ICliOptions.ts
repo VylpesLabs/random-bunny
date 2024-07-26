@@ -3,5 +3,6 @@ export default interface ICliOptions {
     json?: boolean,
     sort: "new" | "hot" | "top",
     o?: string,
+    limit: number,
     queryMetadata?: boolean,
 }

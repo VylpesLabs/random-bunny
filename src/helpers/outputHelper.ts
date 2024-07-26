@@ -24,6 +24,7 @@ export default class OutputHelper {
         if (options.queryMetadata != null) {
             outputLines.push(`Query.Subreddit = ${response.Query.subreddit}`);
             outputLines.push(`Query.Sort By = ${response.Query.sortBy}`);
+            outputLines.push(`Query.Limit = ${response.Query.limit}`);
         }
 
         return outputLines.join("\n");

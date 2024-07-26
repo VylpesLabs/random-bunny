@@ -10,6 +10,7 @@ describe("GenerateOutput", () => {
             Query: {
                 subreddit: "rabbits",
                 sortBy: "hot",
+                limit: 100,
             },
             Result: {
                 Archived: false,
@@ -40,6 +41,7 @@ describe("GenerateOutput", () => {
             Query: {
                 subreddit: "rabbits",
                 sortBy: "hot",
+                limit: 100,
             },
             Result: {
                 Archived: false,
@@ -72,6 +74,7 @@ describe("GenerateOutput", () => {
             Query: {
                 subreddit: "rabbits",
                 sortBy: "hot",
+                limit: 100,
             },
             Result: {
                 Archived: false,
