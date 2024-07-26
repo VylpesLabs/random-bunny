@@ -35,7 +35,7 @@ describe("Endpoint", () => {
             expect(OutputHelper.GenerateOutput).toHaveBeenCalledWith(response, options);
 
             expect(fs.writeFileSync).toHaveBeenCalledTimes(1);
-            expect(fs.writeFileSync).toHaveBeenCalledWith("file.txt", "test output");
+            expect(fs.writeFileSync).toHaveBeenCalledWith("file.txt", "test output\n");
 
             expect(console.log).not.toHaveBeenCalled();
 

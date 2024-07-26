@@ -9,7 +9,7 @@ export default class CliHelper {
             const output = OutputHelper.GenerateOutput(response, options);
 
             if (options.o) {
-                writeFileSync(options.o, output);
+                writeFileSync(options.o, `${output}\n`);
             } else {
                 console.log(output);
             }
