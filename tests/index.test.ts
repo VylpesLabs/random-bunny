@@ -122,7 +122,7 @@ describe('randomBunny', () => {
         expect(result.Error!.Code).toBe(ErrorCode.NoImageResultsFound);
         expect(result.Error!.Message).toBe(ErrorMessages.NoImageResultsFound);
 
-        expect(fetchMock).toBeCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
+        expect(fetchMock).toHaveBeenCalledWith('https://reddit.com/r/rabbits/new.json?limit=100');
     });
 
     test('GIVEN randomSelect does NOT find a valid response, EXPECT failure result', async () => {
