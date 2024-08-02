@@ -118,6 +118,7 @@ export default async function randomBunny(subreddit: string, sortBy: "new" | "ho
     }
 
     const redditResult: IRedditResult = {
+        Author: randomData['author'],
         Archived: randomData['archived'],
         Downs: randomData['downs'],
         Hidden: randomData['hidden'],

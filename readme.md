@@ -37,6 +37,7 @@ Returns a `json string` for a random post. Accepts 3 arguments: `subreddit`, `so
 
 The json string which gets returned consists of:
 - archived
+- author
 - downs
 - hidden
 - permalink

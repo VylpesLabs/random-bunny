@@ -14,6 +14,7 @@ describe("GenerateOutput", () => {
             },
             Result: {
                 Archived: false,
+                Author: 'author',
                 Downs: 0,
                 Hidden: false,
                 Permalink: "/r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/",
@@ -45,6 +46,7 @@ describe("GenerateOutput", () => {
             },
             Result: {
                 Archived: false,
+                Author: 'author',
                 Downs: 0,
                 Hidden: false,
                 Permalink: "/r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/",
@@ -78,6 +80,7 @@ describe("GenerateOutput", () => {
             },
             Result: {
                 Archived: false,
+                Author: 'author',
                 Downs: 0,
                 Hidden: false,
                 Permalink: "/r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/",

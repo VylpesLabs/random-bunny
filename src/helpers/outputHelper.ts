@@ -12,6 +12,7 @@ export default class OutputHelper {
         }
 
         outputLines.push(`Archived = ${result.Archived}`);
+        outputLines.push(`Author = ${result.Author}`);
         outputLines.push(`Downvotes = ${result.Downs}`);
         outputLines.push(`Hidden = ${result.Hidden}`);
         outputLines.push(`Permalink = ${result.Permalink}`);

@@ -20,6 +20,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -52,6 +53,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -137,6 +139,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -173,6 +176,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -209,6 +213,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -244,6 +249,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -276,6 +282,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',
@@ -311,6 +318,7 @@ describe('randomBunny', () => {
                         {
                             data: {
                                 archived: false,
+                                author: 'author',
                                 downs: 0,
                                 hidden: false,
                                 permalink: '/r/Rabbits/comments/12pa5te/someone_told_pickles_its_monday_internal_fury/',

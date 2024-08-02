@@ -1,5 +1,6 @@
 export default interface IRedditResult {
     Archived: boolean,
+    Author: string,
     Downs: number,
     Hidden: boolean,
     Permalink: string,

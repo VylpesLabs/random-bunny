@@ -1,6 +1,7 @@
 export default interface IFetchResult {
     data: {
         archived: boolean,
+        author: string,
         downs: number,
         hidden: boolean,
         permalink: string,

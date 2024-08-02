@@ -25,6 +25,7 @@ By default, the command will fetch a random image from `r/rabbits` and return it
 $ random-bunny
 
 Archived = false
+Author = Rabbit_Owner
 Downvotes = 0
 Hidden = false
 Permalink = /r/Rabbits/comments/1av1rg9/cute_baby_bun/
@@ -72,7 +73,7 @@ $ random-bunny --json
 
 $ randon-bunny -j
 
-{"Archived":false,"Downs":0,"Hidden":false,"Permalink":"/r/Rabbits/comments/1av1rg9/cute_baby_bun/","Subreddit":"Rabbits","SubredditSubscribers":486085,"Title":"Cute baby bun","Ups":210,"Url":"https://i.redd.it/sfz0srdrimjc1.png"}
+{"Archived":false,"Author":"Rabbit_Owner","Downs":0,"Hidden":false,"Permalink":"/r/Rabbits/comments/1av1rg9/cute_baby_bun/","Subreddit":"Rabbits","SubredditSubscribers":486085,"Title":"Cute baby bun","Ups":210,"Url":"https://i.redd.it/sfz0srdrimjc1.png"}
 ```
 
 ## Sort
