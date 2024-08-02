@@ -1,0 +1,35 @@
+name: Stage
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+
+    runs-on: node
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    - run: yarn install --frozen-lockfile
+    - run: yarn build
+    - run: yarn test
+    - run: yarn lint
+
+  rsync:
+    needs: build
+    runs-on: node
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+    - run: yarn install --frozen-lockfile
+    - run: yarn build
+    - run: yarn package
+    - run: cp -r ./bin ${{ secrets.STAGE_REPO_PATH }}

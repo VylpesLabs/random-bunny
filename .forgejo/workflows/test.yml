@@ -7,7 +7,6 @@ on:
       - hotfix/*
       - renovate/*
       - dependabot/*
-      - develop
 
 jobs:
   build:
