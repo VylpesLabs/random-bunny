@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenerateOutput EXPECT standout output to be returned 1`] = `
+"Archived = false
+Author = author
+Downvotes = 0
+Hidden = false
+Permalink = /r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/
+Subreddit = Rabbits
+Subreddit Subscribers = 654751
+Title = This is my Ms Bear!
+Upvotes = 17
+Url = https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d"
+`;
+
+exports[`GenerateOutput GIVEN options.json is true, EXPECT output to be returned as JSON 1`] = `"{"Archived":false,"Author":"author","Downs":0,"Hidden":false,"Permalink":"/r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/","Subreddit":"Rabbits","SubredditSubscribers":654751,"Title":"This is my Ms Bear!","Ups":17,"Url":"https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d"}"`;
+
+exports[`GenerateOutput GIVEN options.queryMetadata is supplied, EXPECT query metadata to be added 1`] = `
+"Archived = false
+Author = author
+Downvotes = 0
+Hidden = false
+Permalink = /r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/
+Subreddit = Rabbits
+Subreddit Subscribers = 654751
+Title = This is my Ms Bear!
+Upvotes = 17
+Url = https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d
+Query.Subreddit = rabbits
+Query.Sort By = hot
+Query.Limit = 100"
+`;

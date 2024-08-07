@@ -1,4 +1,4 @@
-import ImageHelper from "../src/imageHelper";
+import ImageHelper from "../../src/helpers/imageHelper";
 import fetch from "got-cjs";
 
 jest.mock('got-cjs');

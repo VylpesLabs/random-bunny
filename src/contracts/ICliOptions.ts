@@ -1,6 +1,8 @@
 export default interface ICliOptions {
     subreddit: string,
     json?: boolean,
-    sort: string,
+    sort: "new" | "hot" | "top",
+    o?: string,
+    limit: number,
     queryMetadata?: boolean,
 }

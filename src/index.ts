@@ -5,18 +5,25 @@ import { List } from 'linqts';
 import IFetchResult from "./contracts/IFetchResult";
 import { ErrorCode } from "./constants/ErrorCode";
 import ErrorMessages from "./constants/ErrorMessages";
-import ImageHelper from "./imageHelper";
+import ImageHelper from "./helpers/imageHelper";
 
-const sortable = [
-    'new',
-    'hot',
-    'top'
-];
+export default async function randomBunny(subreddit: string, sortBy: "new" | "hot" | "top" = 'hot', limit: number = 100): Promise<IReturnResult> {
+    if (limit < 1 || limit > 100) {
+        return {
+            IsSuccess: false,
+            Query: {
+                subreddit: subreddit,
+                sortBy: sortBy,
+                limit: limit,
+            },
+            Error: {
+                Code: ErrorCode.LimitOutOfRange,
+                Message: ErrorMessages.LimitOutOfRange,
+            }
+        };
+    }
 
-export default async function randomBunny(subreddit: string, sortBy: string = 'hot'): Promise<IReturnResult> {
-    if (!sortable.includes(sortBy)) sortBy = 'hot';
-
-    const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json?limit=100`)
+    const result = await fetch(`https://reddit.com/r/${subreddit}/${sortBy}.json?limit=${limit}`)
         .then((res) => {
             return res;
         })
@@ -30,6 +37,7 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
             Query: {
                 subreddit: subreddit,
                 sortBy: sortBy,
+                limit: limit,
             },
             Error: {
                 Code: ErrorCode.FailedToFetchReddit,
@@ -46,6 +54,7 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
             Query: {
                 subreddit: subreddit,
                 sortBy: sortBy,
+                limit: limit,
             },
             Error: {
                 Code: ErrorCode.UnableToParseJSON,
@@ -68,6 +77,7 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
             Query: {
                 subreddit: subreddit,
                 sortBy: sortBy,
+                limit: limit,
             },
             Error: {
                 Code: ErrorCode.NoImageResultsFound,
@@ -93,6 +103,7 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
                 Query: {
                     subreddit: subreddit,
                     sortBy: sortBy,
+                    limit: limit,
                 },
                 Error: {
                     Code: ErrorCode.NoImageResultsFound,
@@ -107,6 +118,7 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
     }
 
     const redditResult: IRedditResult = {
+        Author: randomData['author'],
         Archived: randomData['archived'],
         Downs: randomData['downs'],
         Hidden: randomData['hidden'],
@@ -123,6 +135,7 @@ export default async function randomBunny(subreddit: string, sortBy: string = 'h
         Query: {
             subreddit: subreddit,
             sortBy: sortBy,
+            limit: limit,
         },
         Result: redditResult
     };
