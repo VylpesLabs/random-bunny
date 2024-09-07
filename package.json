@@ -68,8 +68,6 @@
     "scripts": "dist/**/*.js",
     "targets": [
       "latest-linux-x64",
-      "latest-macos-x64",
-      "latest-macos-arm64",
       "latest-win-x64"
     ],
     "outputPath": "bin"

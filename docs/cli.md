@@ -9,13 +9,12 @@ The project can be downloaded as a binary for your system via the [GitHub Releas
 We currently support:
 - Linux (x64)
 - Windows (x64)
-- macOS (x64, Arm64\*)
 
 The git repository can also be cloned and ran via `yarn build` and `yarn start`.
 
 You can produce the binary using the `yarn package` command. This creates the binaries in the `./bin` folder.
 
-> **NOTE:** We are aware of a bug in the macOS Arm64 builds failing to execute. For now you're still able to use the x64 builds under Rosetta fine. This will hopefully be fixed in a future release.
+> **NOTE:** As of version 2.4 I will no longer be supporting and building macOS builds as I have no capacity to test and build for it.
 
 ## Default Output
 
