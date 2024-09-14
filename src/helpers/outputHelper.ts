@@ -8,6 +8,15 @@ export default class OutputHelper {
         const outputLines: string[] = [];
 
         if (options.json) {
+            if (options.queryMetadata != null) {
+                return JSON.stringify({
+                    ...result,
+                    query: {
+                        ...response.Query,
+                    }
+                })
+            }
+
             return JSON.stringify(result);
         }
 
