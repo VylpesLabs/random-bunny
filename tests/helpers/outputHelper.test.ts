@@ -102,4 +102,6 @@ describe("GenerateOutput", () => {
         // Assert
         expect(result).toMatchSnapshot();
     });
+
+    test.todo("GIVEN options.queryMetadata AND options.json is supplied, EXPECT query metadata to be in JSON format")
 });
