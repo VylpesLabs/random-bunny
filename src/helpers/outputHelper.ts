@@ -5,7 +5,7 @@ export default class OutputHelper {
     public static GenerateOutput(response: IReturnResult, options: ICliOptions): string {
         const result = response.Result!;
 
-        let outputObject: any = {};
+        let outputObject = {};
 
         outputObject = { ...result };
 
