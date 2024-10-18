@@ -20,8 +20,9 @@ export default class OutputHelper {
         return this.GetFriendlyObjectText(outputObject, "");
     }
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     private static GetFriendlyObjectText(object: any, output: string, prefix: string = ""): string {
-        for (let key in object) {
+        for (const key in object) {
             if (typeof(object[key]) == "object") return this.GetFriendlyObjectText(object[key], output, `${key}.`);
 
             output += `${prefix}${key} = ${object[key]}\n`;
@@ -34,4 +35,5 @@ export default class OutputHelper {
         a[target] = { ...b };
         return a;
     }
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 }
