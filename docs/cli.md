@@ -26,6 +26,7 @@ $ random-bunny
 Archived = false
 Author = Rabbit_Owner
 Downvotes = 0
+Gallery = https://i.redd.it/sfz0srdrimjc1.png, https://i.redd.it/sfz0srdrimjc1.png
 Hidden = false
 Permalink = /r/Rabbits/comments/1av1rg9/cute_baby_bun/
 Subreddit = Rabbits
@@ -34,6 +35,8 @@ Title = Cute baby bun
 Upvotes = 211
 Url = https://i.redd.it/sfz0srdrimjc1.png
 ```
+
+- The `Gallery` field is only shown when there is more than 1 image returned, which then the `Url` field is the first image of that list.
 
 ## Help
 
@@ -72,8 +75,10 @@ $ random-bunny --json
 
 $ randon-bunny -j
 
-{"Archived":false,"Author":"Rabbit_Owner","Downs":0,"Hidden":false,"Permalink":"/r/Rabbits/comments/1av1rg9/cute_baby_bun/","Subreddit":"Rabbits","SubredditSubscribers":486085,"Title":"Cute baby bun","Ups":210,"Url":"https://i.redd.it/sfz0srdrimjc1.png"}
+{"Archived":false,"Author":"Rabbit_Owner","Downs":0,"Hidden":false,"Permalink":"/r/Rabbits/comments/1av1rg9/cute_baby_bun/","Subreddit":"Rabbits","SubredditSubscribers":486085,"Title":"Cute baby bun","Ups":210,"Url":"https://i.redd.it/sfz0srdrimjc1.png","Gallery":["https://i.redd.it/sfz0srdrimjc1.png"]}
 ```
+
+- The `Url` field is the first image of the `Gallery` array
 
 ## Sort
 
