@@ -22,13 +22,13 @@ export default class OutputHelper {
 
     /* eslint-disable @typescript-eslint/no-explicit-any */
     private static GetFriendlyObjectText(object: any): string {
-        let output = "";
+        const output: string[] = [];
 
         for (const key in object) {
-            output += `${key} = ${object[key]}\n`;
+            output.push(`${key} = ${object[key]}`);
         }
 
-        return output;
+        return output.join("\n");
     }
     /* eslint-enable @typescript-eslint/no-explicit-any */
 }
