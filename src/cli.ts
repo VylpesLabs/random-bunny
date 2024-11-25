@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Command, Option } from "commander";
 import randomBunny from "./index";
 import ICliOptions from "./contracts/ICliOptions";
