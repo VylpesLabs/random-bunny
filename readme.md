@@ -39,6 +39,7 @@ The json string which gets returned consists of:
 - archived
 - author
 - downs
+- gallery
 - hidden
 - permalink
 - subreddit

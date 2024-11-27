@@ -17,18 +17,19 @@ describe("FetchImageFromRedditGallery", () => {
         expect(fetchMock).toHaveBeenCalledTimes(1);
         expect(fetchMock).toHaveBeenCalledWith("https://redd.it/gallery/image");
 
-        expect(result).toBe("https://preview.redd.it/image.png");
+        expect(result.length).toBe(1);
+        expect(result[0]).toBe("https://preview.redd.it/image.png");
     });
 
-    test("GIVEN fetch is unable to return data, EXPECT undefined returned", async () => {
+    test("GIVEN fetch is unable to return data, EXPECT empty array returned", async () => {
         fetchMock.mockResolvedValue(null);
 
         const result = await ImageHelper.FetchImageFromRedditGallery("https://redd.it/gallery/image");
 
-        expect(result).toBeUndefined();
+        expect(result.length).toBe(0);
     });
 
-    test("GIVEN fetch is an error, EXPECT undefined returned", async () => {
+    test("GIVEN fetch is an error, EXPECT empty array returned", async () => {
         fetchMock.mockResolvedValue({
             body: "<html><body><img src='https://preview.redd.it/image.png' /></body></html>",
             errored: "Error",
@@ -37,10 +38,10 @@ describe("FetchImageFromRedditGallery", () => {
 
         const result = await ImageHelper.FetchImageFromRedditGallery("https://redd.it/gallery/image");
 
-        expect(result).toBeUndefined();
+        expect(result.length).toBe(0);
     });
 
-    test("GIVEN fetch is not status code of 200, EXPECT undefined returned", async () => {
+    test("GIVEN fetch is not status code of 200, EXPECT empty array returned", async () => {
         fetchMock.mockResolvedValue({
             body: "<html><body><img src='https://preview.redd.it/image.png' /></body></html>",
             errored: undefined,
@@ -49,10 +50,10 @@ describe("FetchImageFromRedditGallery", () => {
 
         const result = await ImageHelper.FetchImageFromRedditGallery("https://redd.it/gallery/image");
 
-        expect(result).toBeUndefined();
+        expect(result.length).toBe(0);
     });
 
-    test("GIVEN image tag is not found, EXPECT undefined returned", async () => {
+    test("GIVEN image tag is not found, EXPECT empty array returned", async () => {
         fetchMock.mockResolvedValue({
             body: "<html><body></body></html>",
             errored: undefined,
@@ -61,10 +62,10 @@ describe("FetchImageFromRedditGallery", () => {
 
         const result = await ImageHelper.FetchImageFromRedditGallery("https://redd.it/gallery/image");
 
-        expect(result).toBeUndefined();
+        expect(result.length).toBe(0);
     });
 
-    test("GIVEN image source attribute is not found, EXPECT undefined returned", async () => {
+    test("GIVEN image source attribute is not found, EXPECT empty array returned", async () => {
         fetchMock.mockResolvedValue({
             body: "<html><body><img /></body></html>",
             errored: undefined,
@@ -73,10 +74,10 @@ describe("FetchImageFromRedditGallery", () => {
 
         const result = await ImageHelper.FetchImageFromRedditGallery("https://redd.it/gallery/image");
 
-        expect(result).toBeUndefined();
+        expect(result.length).toBe(0);
     });
 
-    test("GIVEN image source attribute is not found that is a preview.redd.it url, EXPECT undefined returned", async () => {
+    test("GIVEN image source attribute is not found that is a preview.redd.it url, EXPECT empty array returned", async () => {
         fetchMock.mockResolvedValue({
             body: "<html><body><img src='main.png' /></body></html>",
             errored: undefined,
@@ -85,6 +86,6 @@ describe("FetchImageFromRedditGallery", () => {
 
         const result = await ImageHelper.FetchImageFromRedditGallery("https://redd.it/gallery/image");
 
-        expect(result).toBeUndefined();
+        expect(result.length).toBe(0);
     });
 });

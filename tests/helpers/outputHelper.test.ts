@@ -23,6 +23,7 @@ describe("GenerateOutput", () => {
                 Title: "This is my Ms Bear!",
                 Ups: 17,
                 Url: "https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d",
+                Gallery: ["https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d"],
             },
         } as IReturnResult;
 
@@ -55,6 +56,7 @@ describe("GenerateOutput", () => {
                 Title: "This is my Ms Bear!",
                 Ups: 17,
                 Url: "https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d",
+                Gallery: ["https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d"],
             },
         } as IReturnResult;
 
@@ -89,6 +91,7 @@ describe("GenerateOutput", () => {
                 Title: "This is my Ms Bear!",
                 Ups: 17,
                 Url: "https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d",
+                Gallery: ["https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d"],
             },
         } as IReturnResult;
 

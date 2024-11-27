@@ -93,6 +93,7 @@ export default async function randomBunny(subreddit: string, sortBy: "new" | "ho
     const randomData = randomSelect.data;
 
     let url: string;
+    let gallery: string[];
 
     if (randomData.url.includes("/gallery")) {
         const galleryImage = await ImageHelper.FetchImageFromRedditGallery(randomData.url);
@@ -112,9 +113,11 @@ export default async function randomBunny(subreddit: string, sortBy: "new" | "ho
             }
         }
 
-        url = galleryImage;
+        url = galleryImage[0];
+        gallery = galleryImage;
     } else {
         url = randomData.url;
+        gallery = [randomData.url];
     }
 
     const redditResult: IRedditResult = {
@@ -128,6 +131,7 @@ export default async function randomBunny(subreddit: string, sortBy: "new" | "ho
         Title: randomData['title'],
         Ups: randomData['ups'],
         Url: url,
+        Gallery: gallery,
     };
 
     return {
