@@ -20,8 +20,7 @@ export default class OutputHelper {
         return this.GetFriendlyObjectText(outputObject);
     }
 
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    private static GetFriendlyObjectText(object: any): string {
+    private static GetFriendlyObjectText<T>(object: T): string {
         const output: string[] = [];
 
         for (const key in object) {
@@ -30,5 +29,4 @@ export default class OutputHelper {
 
         return output.join("\n");
     }
-    /* eslint-enable @typescript-eslint/no-explicit-any */
 }
