@@ -34,3 +34,17 @@ subreddit = rabbits
 sortBy = hot
 limit = 100"
 `;
+
+exports[`GenerateOutput GIVEN the Gallery input has more than 1 item, EXPECT Gallery line to be added 1`] = `
+"Archived = false
+Author = author
+Downs = 0
+Hidden = false
+Permalink = /r/Rabbits/comments/1dj8pbt/this_is_my_ms_bear/
+Subreddit = Rabbits
+SubredditSubscribers = 654751
+Title = This is my Ms Bear!
+Ups = 17
+Url = https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d
+Gallery = https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d,https://preview.redd.it/d5yno653zf7d1.jpg?width=640&crop=smart&auto=webp&s=5064d1caec3c12ac2855eb57ff131d0b313d5e9d"
+`;
