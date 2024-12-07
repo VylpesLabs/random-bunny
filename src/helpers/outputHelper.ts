@@ -5,36 +5,28 @@ export default class OutputHelper {
     public static GenerateOutput(response: IReturnResult, options: ICliOptions): string {
         const result = response.Result!;
 
-        const outputLines: string[] = [];
+        let outputObject = {};
+
+        outputObject = { ...result };
+
+        if (options.queryMetadata) {
+            outputObject = { ...outputObject, ...response.Query }
+        }
 
         if (options.json) {
-            return JSON.stringify(result);
+            return JSON.stringify(outputObject);
         }
 
-        outputLines.push(`Archived = ${result.Archived}`);
-        outputLines.push(`Author = ${result.Author}`);
-        outputLines.push(`Downvotes = ${result.Downs}`);
+        return this.GetFriendlyObjectText(outputObject);
+    }
 
-        if (result.Gallery.length > 1) {
-            outputLines.push(`Gallery = ${result.Gallery.join(", ")}`);
+    private static GetFriendlyObjectText<T>(object: T): string {
+        const output: string[] = [];
+
+        for (const key in object) {
+            output.push(`${key} = ${object[key]}`);
         }
 
-        outputLines.push(`Hidden = ${result.Hidden}`);
-
-        outputLines.push(`Permalink = ${result.Permalink}`);
-        outputLines.push(`Subreddit = ${result.Subreddit}`);
-        outputLines.push(`Subreddit Subscribers = ${result.SubredditSubscribers}`);
-        outputLines.push(`Title = ${result.Title}`);
-        outputLines.push(`Upvotes = ${result.Ups}`);
-        outputLines.push(`Url = ${result.Url}`);
-
-
-        if (options.queryMetadata != null) {
-            outputLines.push(`Query.Subreddit = ${response.Query.subreddit}`);
-            outputLines.push(`Query.Sort By = ${response.Query.sortBy}`);
-            outputLines.push(`Query.Limit = ${response.Query.limit}`);
-        }
-
-        return outputLines.join("\n");
+        return output.join("\n");
     }
 }
