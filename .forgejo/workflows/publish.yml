@@ -35,7 +35,7 @@ jobs:
     - name: Upload Binary
       uses: actions/upload-artifact@v3
       with:
-        name: random-bunny-${{ github.run_id }}-${{ github.event.head_commit.timestamp }}
+        name: random-bunny-${{ github.run_id }}-${{ github.event.head_commit.timestamp.replace(':', '-').replace('T', '_').replace('Z', '') }}
         path: bin/
         if-no-files-found: error
 
