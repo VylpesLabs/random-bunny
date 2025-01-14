@@ -34,8 +34,13 @@ jobs:
     - run: yarn install --frozen-lockfile
     - run: yarn build
     - run: yarn package
-    - name: Upload Binary
+    - name: Upload Linux Binary
       uses: actions/upload-artifact@v3
       with:
-        path: bin/
+        path: bin/random-bunny-linux
+        if-no-files-found: error
+    - name: Upload Windows Binary
+      uses: actions/upload-artifact@v3
+      with:
+        path: bin/random-bunny-win.exe
         if-no-files-found: error
